@@ -8,17 +8,13 @@ clothesShop.controller('clothesShopController', ["$http", "$scope", "clothesShop
     $scope.clothes = data;
   });
 
-/*  $scope.select = function(item) {*/
-    //$scope.selected = item;
-  //};
-  /*$scope.selected = {};*/
-
   this.create = function(item){
 
     box = {
       name: item.name,
       price: item.price,
-      quantity: item.quantity
+      quantity: item.quantity,
+      category: item.category
     };
 
     mattia.push(box);
