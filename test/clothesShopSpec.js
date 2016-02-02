@@ -2,6 +2,7 @@ describe('clothesShopController', function(){
   beforeEach(module('clothesShop'));
 
   var ctrl;
+  var $httpBackend;
 
   beforeEach(inject(function($controller) {
     ctrl = $controller('clothesShopController');
