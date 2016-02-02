@@ -1,0 +1,79 @@
+clothes = [
+  {
+    "category": "Women's Footwear",
+    "name": "Almond Toe Court Shoes, Patent Black",
+    "price": 99.00,
+    "quantity": 5
+  },
+  {
+    "category": "Women's Footwear",
+    "name": "Suede Shoes, Blue",
+    "price": 42.00,
+    "quantity": 4
+  },
+  {
+    "category": "Men's Footwear",
+    "name": "Leather Driver Saddle, Loafers, Tan",
+    "price": 34.00,
+    "quantity": 12
+  },
+  {
+    "category": "Men's Footwear",
+    "name": "Flip Flops, Red",
+    "price": 19.00,
+    "quantity": 6
+  },
+  {
+    "category": "Men's Footwear",
+    "name": "Flip Flops, Blue",
+    "price": 19.00,
+    "quantity": 0
+  },
+  {
+    "category": "Women's Casualwear",
+    "name": "Gold Button Cardigan, Black",
+    "price": 167.00,
+    "quantity": 6
+  },
+  {
+    "category": "Women's Casualwear",
+    "name": "Cotton Shorts, Medium Red",
+    "price": 30.00,
+    "quantity": 5
+  },
+  {
+    "category": "Mens's Casulawear",
+    "name": "Fine Stripe Short Sleeve Shirt, Grey",
+    "price": 49.99,
+    "quantity": 9
+  },
+  {
+    "category": "Mens's Casulawear",
+    "name": "Fine Stripe Short Sleeve Shirt, Green",
+    "price": 39.99,
+    "quantity": 3
+  },
+  {
+    "category": "Mens's Casulawear",
+    "name": "Sharkskin Waistcoat, Charcoal",
+    "price": 75.00,
+    "quantity": 2
+  },
+  {
+    "category": "Mens's Casulawear",
+    "name": "Lightweight Patch Pocket Blazer, Deer",
+    "price": 175.50,
+    "quantity": 1
+  },
+  {
+    "category": "Women's Formalwear",
+    "name": "Bird Print Dress, Black",
+    "price": 270.00,
+    "quantity": 10
+  },
+  {
+    "category": "Women's Formalwear",
+    "name": "Mid Twist Cut-Out Dress, Pink",
+    "price": 540.00,
+    "quantity": 5
+  }]
