@@ -5,6 +5,7 @@
   <head>
     <title>Clothes Shop</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="css/animate.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -15,17 +16,23 @@
     <script src="js/clothesShopFactory.js"></script>
   </head>
 
-  <body ng-controller="clothesShopController as clothesCtrl">
+  <body>
     <header>
     <h3> Clothes Shoop </h3>
     </header>
-    <div class='panel panel-default'>
-      <ul class='list-group'>
-        <li>
-        <a ng-repeat="item in clothes">{{item.name}}</a>
-        </li>
-      </ul>
-    </div>
-  </body>
-</html>
+    <div ng-controller="clothesShopController as ctrl">
+      <div class="row" ng-repeat="item in clothes">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <ul class="list-group">
+              <img src="{{ item.image }}" class="img">
+              <a class="list-group-item" ng-click="ctrl.create(item)">{{item.name}}<br>Price: {{ item.price
+                }}  Quantity: {{ item.quantity }}<i class="fa fa-plus"></i></a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </html>
 

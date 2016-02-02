@@ -4,34 +4,20 @@ body {
   line-height: 1.5;
 }
 
-.center {
-  margin: auto;
-  width: 60%;
-  border: 3px solid #73AD21;
-  padding: 10px;
+.list-group {
+  max-width: 270px;
 }
 
-.first-form {
-  width: 30%;
+.row {
+  height: 270px;
+  width: 300px;
+  margin-bottom: 10px;
+  float: left;
+  margin-left: 20px;
 }
 
-.warning {
-  border: 1px solid;
-  width: 30%;
-  padding:15px 10px 15px 50px;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-  color: #9F6000;
-  background-color: #FEEFB3;
-  background-image: url('../img/Warning.png');
-}
-
-.btn-radios-list {
-  display: inline-block;
-  text-align: left;
-}
-
-dt, dd {
-  margin-left: 15px;
-  padding:  2px;
+.img {
+  margin-left: 70px;
+  max-height: 6em;
+  width: 6em;
 }

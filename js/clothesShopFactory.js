@@ -8,7 +8,6 @@ clothesShop.factory('clothesShopFactory', ['$http', function($http){
           method: "GET",
       })
       .then(function(response) {
-        console.log(response.data);
         return response.data;
       });
     }
