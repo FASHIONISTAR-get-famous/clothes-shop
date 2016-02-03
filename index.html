@@ -31,10 +31,17 @@
       <div>
         <button ng-click="clothesCtrl.toCart()">Cart</button>
       </div>
-    </div>
-    <br>
-    <div class="total">
+    <div ng-repeat="item in clothesCtrl.cart">
+      <ul>
+        <li>
+      {{ item.name }}<br>
+          {{ item.price | currency:"£" }}
+          </li>
+        </ul>
+        </div>
+    <div>
       Total: {{ clothesCtrl.sum() | currency:"£" }}
+    </div>
     </div>
 
     <div class="discount" ng-show="clothesCtrl.checkout">
