@@ -20,14 +20,26 @@
     <header>
     <h3> Clothes Shoop </h3>
     </header>
-    <div ng-controller="clothesShopController as ctrl">
+    <div>
           <div class="panel panel-default" ng-repeat="item in clothesCtrl.searchResult">
             <ul class="list-group">
               <img src="{{ item.image }}" class="img">
-              <a class="list-group-item" ng-click="ctrl.create(item)">{{item.name}}<br>Price: {{ item.price
+              <a class="list-group-item" ng-click="clothesCtrl.addItem(item)">{{item.name}}<br>Price: {{ item.price
                 }}  Quantity: {{ item.quantity }}<i class="fa fa-plus"></i></a>
               </ul>
             </div>
+      </div>
+      <br>
+      <div class="list-group" ng-repeat="item in clothesCtrl.cart">
+        <ul>
+        {{ item.name }} {{ item.quantity }}
+        <input type="number" placeholder='quantity' ng-model="clothesCtrl.cart[$index].quantity">
+        <button ng-click='clothesCtrl.cart.splice($index, 1)'>remove</button>
+        </ul>
+      </div>
+
+      <div class="total">
+        Total: {{ clothesCtrl.sum() }}
       </div>
     </body>
   </html>

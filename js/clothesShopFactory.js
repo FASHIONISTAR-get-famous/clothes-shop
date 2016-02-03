@@ -9,5 +9,5 @@ clothesShop.factory('clothesShopFactory', ['$http', function($http){
         });
       }
     };
-    }]);
+ }]);
 

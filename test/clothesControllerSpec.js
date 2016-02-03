@@ -9,16 +9,22 @@ describe('clothesShopController', function(){
 
   beforeEach(function(){
     item = {
-      name: 'mattia',
-      price: 3,
-      quantity: 3,
+      name: 'jeans',
+      price: 30,
+      quantity: 2,
       category: "men"
     };
   });
 
   it('has an object', function(){
+    ctrl.addItem(item);
+    expect(ctrl.cart[0].name).toBe('jeans');
+  });
+
+  it('can modify the quantity of items', function(){
     ctrl.create(item);
-    expect(ctrl.mattia[0].name).toBe('mattia');
+    ctrl.changeQuantity(1);
+    expect(ctrl.cart[0].quantity).toBe(1);
   });
 
 });

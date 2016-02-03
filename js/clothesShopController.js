@@ -1,8 +1,9 @@
-clothesShop.controller('clothesShopController', ["clothesShopFactory", function(clothesShopFactory) {
+clothesShop.controller('clothesShopController', ["clothesShopFactory", function(thesShopFactory) {
 
   var self = this;
+  self.total = 0;
 
-  self.mattia = [];
+  self.cart = [];
 
   var data = clothesShopFactory.clothes()
   .then(function(response) {
@@ -10,16 +11,25 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     console.log('selfresult', self.searchResult);
   });
 
-  self.create = function(item){
+  self.addItem = function(item){
 
-    box = {
+    item = {
       name: item.name,
       price: item.price,
-      quantity: item.quantity,
+      quantity: 1,
       category: item.category
     };
 
-    self.mattia.push(box);
+    self.cart.push(item);
+  };
+
+  this.sum = function(){
+    var tot = 0;
+    for (var i = 0; i < self.cart.length; i++) {
+       tot += (this.cart[i].price * this.cart[i].quantity);
+     }
+     console.log(tot);
+     return tot;
   };
 }]);
 
