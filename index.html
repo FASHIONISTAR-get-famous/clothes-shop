@@ -21,7 +21,7 @@
     <h3> Clothes Shoop </h3>
     </header>
     <div ng-controller="clothesShopController as ctrl">
-          <div class="panel panel-default" ng-repeat="item in clothes">
+          <div class="panel panel-default" ng-repeat="item in clothesCtrl.searchResult">
             <ul class="list-group">
               <img src="{{ item.image }}" class="img">
               <a class="list-group-item" ng-click="ctrl.create(item)">{{item.name}}<br>Price: {{ item.price

@@ -1,14 +1,16 @@
-clothesShop.controller('clothesShopController', ["$http", "$scope", "clothesShopFactory", function($http, $scope, clothesShopFactory) {
+clothesShop.controller('clothesShopController', ["clothesShopFactory", function(clothesShopFactory) {
 
+  var self = this;
 
-  var mattia = [];
-  var promise = clothesShopFactory.clothes();
+  self.mattia = [];
 
-  promise.then(function(data) {
-    $scope.clothes = data;
+  var data = clothesShopFactory.query()
+  .then(function(response) {
+    self.searchResult = response.data;
+    console.log('selfresult', self.searchResult);
   });
 
-  this.create = function(item){
+  self.create = function(item){
 
     box = {
       name: item.name,
@@ -17,8 +19,7 @@ clothesShop.controller('clothesShopController', ["$http", "$scope", "clothesShop
       category: item.category
     };
 
-    mattia.push(box);
-    console.log('mattia', mattia);
+    self.mattia.push(box);
   };
 }]);
 
@@ -29,5 +30,23 @@ clothesShop.controller('clothesShopController', ["$http", "$scope", "clothesShop
   ////$scope.test = data;
   //console.log('second data', $scope.test);
   //});
+
+  //var test = clothesShopFactory.query();
+  //console.log('test', test);
+  //self.doSearch = function() {
+    //
+    //var promise = getData();
+
+    //var getData = function(){
+      //clothesShopFactory.clothes()
+      //.then(function(response) {
+        //this.myData = response.data;
+        //});
+        ////return this.data;
+        /*};*/
+
+        //promise.then(function(data) {
+          //$scope.clothes = data;
+          //});
 
 
