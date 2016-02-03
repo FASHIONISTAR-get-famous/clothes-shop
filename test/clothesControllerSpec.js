@@ -22,13 +22,4 @@ describe('clothesShopController', function(){
   });
 
 });
-//var httpBackend;
-//beforeEach(inject(function($httpBackend) {
-  //httpBackend = $httpBackend;
-  //httpBackend
-  //.when("GET", "test/mock/clothes.json")
-  //.respond(
-    //{ items: items  }
-    //);
 
-    /*}));*/

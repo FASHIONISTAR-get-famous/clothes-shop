@@ -23,30 +23,3 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
   };
 }]);
 
-//var test;
-//$scope.tests = $http.get('test/mock/clothes.json');
-//$scope.tests.then(function(response) {
-  //$scope.test = response.data;
-  ////$scope.test = data;
-  //console.log('second data', $scope.test);
-  //});
-
-  //var test = clothesShopFactory.query();
-  //console.log('test', test);
-  //self.doSearch = function() {
-    //
-    //var promise = getData();
-
-    //var getData = function(){
-      //clothesShopFactory.clothes()
-      //.then(function(response) {
-        //this.myData = response.data;
-        //});
-        ////return this.data;
-        /*};*/
-
-        //promise.then(function(data) {
-          //$scope.clothes = data;
-          //});
-
-
