@@ -4,7 +4,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
 
   self.mattia = [];
 
-  var data = clothesShopFactory.query()
+  var data = clothesShopFactory.clothes()
   .then(function(response) {
     self.searchResult = response.data;
     console.log('selfresult', self.searchResult);

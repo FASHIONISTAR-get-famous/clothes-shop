@@ -2,7 +2,7 @@ clothesShop.factory('clothesShopFactory', ['$http', function($http){
 
 
     return {
-      query: function() {
+      clothes: function() {
         return $http ({
           url: "test/mock/clothes.json",
           methed: 'GET',
