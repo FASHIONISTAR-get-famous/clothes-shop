@@ -20,27 +20,48 @@
     <header>
     <h3> Clothes Shoop </h3>
     </header>
-    <div>
-          <div class="panel panel-default" ng-repeat="item in clothesCtrl.searchResult">
-            <ul class="list-group">
-              <img src="{{ item.image }}" class="img">
-              <a class="list-group-item" ng-click="clothesCtrl.addItem(item)">{{item.name}}<br>Price: {{ item.price
-                }}  Quantity: {{ item.quantity }}<i class="fa fa-plus"></i></a>
-              </ul>
-            </div>
+    <div ng-show="clothesCtrl.list">
+      <div class="panel panel-default"  ng-repeat="item in clothesCtrl.searchResult">
+        <ul class="list-group">
+          <img src="{{ item.image }}" class="img">
+          <a class="list-group-item" ng-click="clothesCtrl.addItem(item)">{{item.name}}<br>Price: {{ item.price
+            }}  Quantity: {{ item.quantity }}<i class="fa fa-plus"></i></a>
+        </ul>
       </div>
-      <br>
+      <div>
+        <button ng-click="clothesCtrl.toCart()">Cart</button>
+      </div>
+    </div>
+    <br>
+    <div class="total">
+      Total: {{ clothesCtrl.sum() | currency:"£" }}
+    </div>
+
+    <div class="discount" ng-show="clothesCtrl.checkout">
+      <button ng-click="clothesCtrl.toCart()">Back</button>
       <div class="list-group" ng-repeat="item in clothesCtrl.cart">
         <ul>
-        {{ item.name }} {{ item.quantity }}
-        <input type="number" placeholder='quantity' ng-model="clothesCtrl.cart[$index].quantity">
-        <button ng-click='clothesCtrl.cart.splice($index, 1)'>remove</button>
+          {{ item.name }} {{ item.quantity }} {{ item.category }}
+          <input type="number" placeholder='quantity' ng-model="clothesCtrl.cart[$index].quantity">
+          <button ng-click='clothesCtrl.cart.splice($index, 1)'>remove</button>
         </ul>
       </div>
 
-      <div class="total">
-        Total: {{ clothesCtrl.sum() }}
-      </div>
-    </body>
-  </html>
+      <form name="myForm">
+        <input type='text' name="voucher" placeholder="Insert your voucher" ng-minlength="6"
+        ng-maxlength="7" ng-model="clothesCtrl.voucher">
+        <button ng-click="clothesCtrl.discount()">Confirm</button>
+        <span class="newTot">Total after discount: {{ clothesCtrl.discount() |
+          currency:"£" }}</span>
+        <div role="alert">
+          <span class="error" ng-show="myForm.voucher.$error.minlength">Too
+            short!</span>
+          <span class="error" ng-show="myForm.voucher.$error.maxlength">Too
+            long!</span>
+        </div>
+      </form>
+    </div>
+    <br>
+  </body>
+</html>
 
