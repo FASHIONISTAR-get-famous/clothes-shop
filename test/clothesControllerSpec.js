@@ -21,14 +21,14 @@ describe('clothesShopController', function(){
     expect(ctrl.mattia[0].name).toBe('mattia');
   });
 
-  //var httpBackend;
-  //beforeEach(inject(function($httpBackend) {
-    //httpBackend = $httpBackend;
-    //httpBackend
-    //.when("GET", "test/mock/clothes.json")
-    //.respond(
-      //{ items: items  }
+});
+//var httpBackend;
+//beforeEach(inject(function($httpBackend) {
+  //httpBackend = $httpBackend;
+  //httpBackend
+  //.when("GET", "test/mock/clothes.json")
+  //.respond(
+    //{ items: items  }
     //);
 
-  /*}));*/
-});
+    /*}));*/
