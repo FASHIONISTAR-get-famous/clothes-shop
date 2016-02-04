@@ -34,6 +34,10 @@ describe('clothesShopController', function(){
 
   });
 
+  it('should show a list of item', function(){
+      expect(ctrl.list).toBe(true);
+  });
+
   it('can add an item in the cart', function(){
     ctrl.addItem(item);
     expect(ctrl.cart[0].name).toBe('jeans');
