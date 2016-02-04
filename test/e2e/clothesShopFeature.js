@@ -7,4 +7,8 @@ describe('the home page', function(){
   it('has a title', function(){
     expect(browser.getTitle()).toEqual('Clothes Shop');
   });
+
+  it('has a list of items', function(){
+    element(by.repeater('item in clothesCtrl.clothesList').row(1).column('name'));
+  });
 });

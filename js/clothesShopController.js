@@ -8,8 +8,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
 
   var data = clothesShopFactory.clothes()
   .then(function(response) {
-    self.searchResult = response.data;
-    console.log('selfresult', self.searchResult);
+    self.clothesList = response.data;
   });
 
   self.addItem = function(item){

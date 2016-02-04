@@ -1,7 +1,7 @@
 [
   {
     "category": "Women's Footwear",
-    "name": "Almond Toe Court Shoes, Patent Black",
+    "name": "Almond Toe Court Shoes, Black",
     "price": 99.00,
     "quantity": 5,
     "image": "img/almondToeCourtShoes.jpg"
@@ -16,7 +16,7 @@
   },
   {
     "category": "Men's Footwear",
-    "name": "Leather Driver Saddle, Loafers, Tan",
+    "name": "Leather Driver Saddle, Tan",
     "price": 34.00,
     "quantity": 12,
     "image": "img/leatherDriverSaddle.jpg"
@@ -51,14 +51,14 @@
   },
   {
     "category": "Mens's Casulawear",
-    "name": "Fine Stripe Short Sleeve Shirt, Grey",
+    "name": "Fine Stripe Short Sleeve Shirt",
     "price": 49.99,
     "quantity": 9,
     "image": "img/shortSleeveShirtGrey.jpeg"
   },
   {
     "category": "Mens's Casulawear",
-    "name": "Fine Stripe Short Sleeve Shirt, Green",
+    "name": "Fine Stripe Short Sleeve Shirt",
     "price": 39.99,
     "quantity": 3,
     "image": "img/shortSleeveShirtGreen.png"
@@ -72,13 +72,13 @@
   },
   {
     "category": "Mens's Casulawear",
-    "name": "Lightweight Patch Pocket Blazer, Deer",
+    "name": "Lightweight Patch Pocket Blazer",
     "price": 175.50,
     "quantity": 1,
     "image": "img/lightweightPathcPocketBlazer.png"
   },
   {
-    "category": "Women's Formalwear",
+    "category": "Women Formalwear",
     "name": "Bird Print Dress, Black",
     "price": 270.00,
     "quantity": 10,
