@@ -16,59 +16,161 @@
     <script src="js/clothesShopFactory.js"></script>
   </head>
 
-  <body ng-controller="clothesShopController as clothesCtrl">
-    <header>
-    <h3> Clothes Shoop </h3>
-    </header>
-    <div ng-show="clothesCtrl.list">
-      <div class="panel panel-default"  ng-repeat="item in clothesCtrl.searchResult">
+  <body >
+    <div class='diagonal_lines_pattern' style="width: 100%" ng-controller="clothesShopController as clothesCtrl">
+      <div class='shaddowblock'>
+
+        <!--header-->
+    <div id="header">
+      <div class="container">
+        <div class='pull-left'>
+          <div class="logo">
+            <a class="logo">
+              <img alt src="img/logo.png" style="max-width: 350px">
+            </a>
+          </div>
+        </div>
+        <div class="pull-right">
+          <a ng-ref="cart" ng-click="clothesCtrl.toCart()">
+            <i class="fa fa-shopping-cart font18"></i>
+            <span class="lavel label-orange font14">{{ clothesCtrl.countItems() }} items</span>
+            " Sub Total: "{{ clothesCtrl.sum() | currency:"£" }}
+          </a>
+          <div class='waring' ng-show='clothesCtrl.outOfOrder'>
+            Item out of order
+          </div>
+
+        </div>
+      </div>
+      <div id="categorymenu">
+        <nav class='subnav'>
+          <ul class='nav-pills categorymenu container'>
+            <li>
+              <a  >MEN'S FOOTWEAR</a>
+            </li>
+            <li>
+              <a  >WOMEN'S FOOTWEAR</a>
+            </li>
+            <li>
+              <a  >WOMEN'S CASUALWEAR</a>
+            </li>
+            <li>
+              <a  >MENS'S CASUALWEAR</a>
+            </li>
+            <li>
+              <a  >WOMEN'S FORMALWEAR</a>
+            </li>
+            <li>
+              <a  >MEN'S FORMALWEAR</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!--main body-->
+    <div class='maincontainer' >
+      <div class="panel panel-default" ng-show="clothesCtrl.list" ng-repeat="item in clothesCtrl.searchResult">
         <ul class="list-group">
-          <img src="{{ item.image }}" class="img">
+          <img alt src="{{ item.image }}" class="img">
           <a class="list-group-item" ng-click="clothesCtrl.addItem(item)">{{item.name}}<br>Price: {{ item.price
-            }}  Quantity: {{ item.quantity }}<i class="fa fa-plus"></i></a>
+            }}  Quantity: {{ item.quantity }}</a>
         </ul>
       </div>
-      <div>
-        <button ng-click="clothesCtrl.toCart()">Cart</button>
-      </div>
-    <div ng-repeat="item in clothesCtrl.cart">
-      <ul>
-        <li>
-      {{ item.name }}<br>
-          {{ item.price | currency:"£" }}
-          </li>
-        </ul>
+      <div class='cart' ng-show="clothesCtrl.checkout">
+        <h3 class='heading1'>
+          <span class='maintext1'>
+            <i class='fa fa-shopping-cart'></i>
+            SHOPPING CART
+          </span>
+        </h3>
+
+
+        <div class='cart-info' ng-repeat="item in clothesCtrl.cart">
+          <table class='table table-striped table-bordered'>
+            <tbody>
+              <tr style='height: 3em; text-align: center' >
+                <th >Image</th>
+                <th >Product Name</th>
+                <th >Qty</th>
+                <th >Unit price</th>
+                <th >Total</th>
+                <th >Remove</th>
+              </tr>
+                <tr>
+                  <td class='image'>
+                    <div class='imageCart'>
+                      <img alt='product' src="{{ item.image }}" style="width: auto; height:
+                      auto; max-heightL 50px; max-width: 50px; margin-left: 10px">
+                    </div>
+                  </td>
+                  <td class='productName'>
+                    {{ item.name }}
+                  </td>
+                  <td class='quantity'>
+                    <div>
+                      <input type="number" placeholder='quantity' class='inputBox' ng-model="clothesCtrl.cart[$index].quantity">
+                    </div>
+                  </td>
+                  <td class='unitPrice'>
+                    {{ item.price | currency:"£" }}
+                  </td>
+                  <td class='price'>
+                  </td>
+                  <td class='action'>
+                    <a ng-click='clothesCtrl.cart.splice($index, 1)'>Remove</a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
         </div>
-    <div>
-      Total: {{ clothesCtrl.sum() | currency:"£" }}
-    </div>
+
+
+        <div class='pull-right'>
+          <div class='totalCart'>
+            <table class='table table-striped table-bordered'>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class='extra bold totalamount'>Total: </span>
+                  </td>
+                  <td>
+                    <span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="discount" ng-show="clothesCtrl.checkout">
-      <button ng-click="clothesCtrl.toCart()">Back</button>
-      <div class="list-group" ng-repeat="item in clothesCtrl.cart">
-        <ul>
-          {{ item.name }} {{ item.quantity }} {{ item.category }}
-          <input type="number" placeholder='quantity' ng-model="clothesCtrl.cart[$index].quantity">
-          <button ng-click='clothesCtrl.cart.splice($index, 1)'>remove</button>
-        </ul>
-      </div>
 
-      <form name="myForm">
-        <input type='text' name="voucher" placeholder="Insert your voucher" ng-minlength="6"
-        ng-maxlength="7" ng-model="clothesCtrl.voucher">
-        <button ng-click="clothesCtrl.discount()">Confirm</button>
-        <span class="newTot">Total after discount: {{ clothesCtrl.discount() |
-          currency:"£" }}</span>
-        <div role="alert">
-          <span class="error" ng-show="myForm.voucher.$error.minlength">Too
-            short!</span>
-          <span class="error" ng-show="myForm.voucher.$error.maxlength">Too
-            long!</span>
-        </div>
-      </form>
+    <!--<div class="discount" ng-show="clothesCtrl.checkout">-->
+    <!--<button ng-click="clothesCtrl.toCart()">Back</button>-->
+    <!--<div class="list-group" ng-repeat="item in clothesCtrl.cart">-->
+    <!--<ul>-->
+    <!--{{ item.name }} {{ item.quantity }} {{ item.category }}-->
+    <!--</div>-->
+
+    <!--<form name="myForm">-->
+    <!--<input type='text' name="voucher" placeholder="Insert your voucher" ng-minlength="6"-->
+    <!--ng-maxlength="7" ng-model="clothesCtrl.voucher">-->
+    <!--<button ng-click="clothesCtrl.discount()">Confirm</button>-->
+    <!--<span class="newTot">Total after discount: {{ clothesCtrl.discount() |-->
+    <!--currency:"£" }}</span>-->
+    <!--<div role="alert">-->
+    <!--<span class="error" ng-show="myForm.voucher.$error.minlength">Too-->
+    <!--short!</span>-->
+    <!--<span class="error" ng-show="myForm.voucher.$error.maxlength">Too-->
+    <!--long!</span>-->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
     </div>
-    <br>
+    </div>
+    </div>
   </body>
 </html>
 

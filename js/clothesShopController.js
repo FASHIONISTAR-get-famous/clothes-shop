@@ -5,6 +5,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
   self.cart = [];
   self.totCheckOut = 0;
   self.checkout = false;
+  self.outOfOrder = false;
   self.list = true;
 
   var data = clothesShopFactory.clothes()
@@ -14,15 +15,30 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
   });
 
   self.addItem = function(item){
-
+    var quantity = item.quantity;
     item = {
       name: item.name,
       price: item.price,
       quantity: 1,
-      category: item.category
+      category: item.category,
+      image: item.image
     };
 
-    self.cart.push(item);
+    if (quantity <= 0) {
+      self.notAvailable();
+    } else if (self.isInCart(item)) {
+      self.cart.push(item);
+      self.outOfOrder = false;
+    }
+  };
+
+  self.isInCart = function(item) {
+    for(var i = 0; i < self.cart.length; i++) {
+      if (item.name === self.cart[i].name) {
+        return false;
+      }
+    }
+    return true;
   };
 
   self.sum = function(){
@@ -66,9 +82,21 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     }
   };
 
+  self.countItems = function(){
+    var totItems = 0;
+    for(var i = 0; i < self.cart.length; i++) {
+      totItems +=  self.cart[i].quantity;
+    }
+    return totItems;
+  };
+
   self.toCart = function(){
     self.checkout = !self.checkout;
     self.list = !self.list;
+  };
+
+  self.notAvailable = function(){
+    self.outOfOrder = !self.outOfOrder;
   };
 }]);
 
