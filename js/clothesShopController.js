@@ -1,12 +1,10 @@
 clothesShop.controller('clothesShopController', ["clothesShopFactory", function(clothesShopFactory) {
 
   var self = this;
-  self.total = 0;
   self.cart = [];
-  self.totCheckOut = 0;
-  self.checkout = false;
   self.outOfOrder = false;
   self.list = true;
+  self.newTot = 0;
 
   var data = clothesShopFactory.clothes()
   .then(function(response) {
@@ -25,7 +23,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     };
 
     if (quantity <= 0) {
-      self.notAvailable();
+      self.outOfOrder = true;
     } else if (self.isInCart(item)) {
       self.cart.push(item);
       self.outOfOrder = false;
@@ -46,43 +44,58 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     for (var i = 0; i < self.cart.length; i++) {
       tot += (self.cart[i].price * self.cart[i].quantity);
     }
-    console.log(tot);
     return tot;
   };
 
-  self.checkVoucher = function(){
-
-    var codes = ['hellohe', 'ciao', 'foot'];
-    var prova = new RegExp(self.voucher);
-    if (prova.test(codes) === true) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   self.discount = function(){
-    var newTot = self.sum();
-    if (newTot > 75 && self.checkCategory() === true) {
-      newTot -= 15;
-    } else if (newTot > 50) {
-      newTot -= 10;
-    } else {
-      return newTot;
+    var tot = self.sum();
+    var discount = 0;
+    if (tot > 75 && self.isMenCategory()) {
+      discount = 15;
+    } else if (tot > 50) {
+      discount = 10;
     }
-    return newTot;
+    return discount;
   };
 
-  self.checkCategory = function(){
+  self.isMenCategory = function(){
     for (var i = 0; i < self.cart.length; i++) {
       if(self.cart[i].category === "Men's Footwear") {
         return true;
       }
-      return false;
     }
+    return false;
   };
 
-  self.countItems = function(){
+  self.afterDisc = function(){
+    var sum = self.sum();
+    var discount = self.discount();
+    var total = sum - discount;
+    return total;
+  };
+
+  self.isVoucherCorrect = function(){
+    var codes = ['womenwear', 'casual', 'footwear'];
+    var prova = new RegExp(self.voucher);
+    if (prova.test(codes) === true) {
+      voucher = 5;
+      self.okVoucher = true;
+      self.wrongVoucher = false;
+    } else {
+      voucher = 0;
+      self.wrongVoucher = true;
+      self.okVoucher = false;
+    }
+    self.totAfterVoucher(voucher);
+  };
+
+  self.totAfterVoucher = function(voucher){
+    var total = self.afterDisc();
+    self.finalTot = true;
+    self.newTot = total - voucher;
+  };
+
+  self.countQuantity = function(){
     var totItems = 0;
     for(var i = 0; i < self.cart.length; i++) {
       totItems +=  self.cart[i].quantity;
@@ -95,8 +108,8 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     self.list = !self.list;
   };
 
-  self.notAvailable = function(){
-    self.outOfOrder = !self.outOfOrder;
-  };
+  //self.notAvailable = function(){
+    //self.outOfOrder = !self.outOfOrder;
+  /*};*/
 }]);
 

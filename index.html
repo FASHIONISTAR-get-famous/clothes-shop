@@ -33,7 +33,7 @@
         <div class="pull-right">
           <a ng-ref="cart" ng-click="clothesCtrl.toCart()">
             <i class="fa fa-shopping-cart font18"></i>
-            <span class="lavel label-orange font14">{{ clothesCtrl.countItems() }} items</span>
+            <span class="lavel label-orange font14">{{ clothesCtrl.countQuantity() }} items</span>
             " Sub Total: "{{ clothesCtrl.sum() | currency:"£" }}
           </a>
           <div class='waring' ng-show='clothesCtrl.outOfOrder'>
@@ -132,10 +132,52 @@
               <tbody>
                 <tr>
                   <td>
-                    <span class='extra bold totalamount'>Total: </span>
+                    <span class='extra bold totalamount'>SubTotal: </span>
                   </td>
                   <td>
                     <span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="extra bold">Discount: </span>
+                  </td>
+                  <td>
+                    <span class='bold'>{{ clothesCtrl.discount() | currency:"£"
+                      }}</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class='extra bold totalamount'>Total: </span>
+                  </td>
+                  <td>
+                    <span class='bold totalamount'>{{ clothesCtrl.afterDisc() | currency:"£" }}</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class='table table-striped table-bordered'>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class='extra bold totalamount'>Voucher: </span>
+                  </td>
+                  <td>
+                    <input type='text' class='bold totalamount' placeholder='Insert your voucher'ng-model='clothesCtrl.voucher'>
+                    <button ng-click='clothesCtrl.isVoucherCorrect()'>Confirm</button>
+                    <span ng-show="clothesCtrl.okVoucher" ><i class="fa fa-check"></i> </span>
+                    <span ng-show="clothesCtrl.wrongVoucher" > <i class="fa fa-times"></i></span>
+
+                  </td>
+                </tr>
+                <tr ng-show='clothesCtrl.finalTot'>
+                  <td>
+                    <span class='extra bold totalamount'>New Total: </span>
+                  </td>
+                  <td>
+                    <span class='bold totalamount'>
+                      {{ clothesCtrl.newTot | currency:"£" }}</span>
                   </td>
                 </tr>
               </tbody>
