@@ -30,7 +30,6 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     }
   };
 
-
   self.isNotInCart = function(item) {
     for(var i = 0; i < self.cart.length; i++) {
       if (item.name === self.cart[i].name) {

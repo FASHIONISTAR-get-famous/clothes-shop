@@ -74,7 +74,6 @@ describe('clothesShopController', function(){
         image: ''
       };
 
-
       ctrl.addItem(item);
       ctrl.addItem(item2);
     });
@@ -84,8 +83,6 @@ describe('clothesShopController', function(){
     });
 
     it('can receive 10£ discount for order over 50£', function(){
-      ctrl.addItem(item);
-      ctrl.addItem(item2);
       expect(ctrl.sum()).toBe(54);
       expect(ctrl.discount()).toBe(10);
     });
@@ -94,18 +91,19 @@ describe('clothesShopController', function(){
       expect(ctrl.afterDisc()).toBe(44);
     });
 
-    it("can receive 15£ discount for order over 75£ and if they have got at least one Men's footwear item", function(){
+    it("can receive 15£ discount for order over 75£ and if get at least one Men's footwear item", function(){
       ctrl.addItem(item4);
       expect(ctrl.sum()).toBe(94);
       expect(ctrl.discount()).toBe(15);
     });
 
-    it("can apply 15£ discount to the total for order over 75£ and one Men's footwear item", function(){
+    it("can apply 15£ discount to the total for order over 75£ and at least one Men's footwear item", function(){
       ctrl.addItem(item4);
+      expect(ctrl.sum()).toBe(94);
       expect(ctrl.afterDisc()).toBe(79);
     });
 
-    it("can not receive 15£ discount for order over 75£ if at least one item is not Men's footwear", function(){
+    it("can not receive 15£ discount, but 10£, for order over 75£ if doesn't get at least one item is not Men's footwear", function(){
       ctrl.addItem(item5);
       expect(ctrl.sum()).toBe(94);
       expect(ctrl.isMenCategory()).toBe(false);
@@ -114,6 +112,7 @@ describe('clothesShopController', function(){
 
     it('can receive additional 5£ discount if has a correct voucher', function(){
       ctrl.addItem(item4);
+      expect(ctrl.sum()).toBe(94);
       expect(ctrl.totAfterVoucher(5)).toBe(74);
     });
   });
