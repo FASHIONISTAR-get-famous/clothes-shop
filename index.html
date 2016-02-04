@@ -34,7 +34,7 @@
           <a ng-ref="cart" ng-click="clothesCtrl.toCart()">
             <i class="fa fa-shopping-cart font18"></i>
             <span class="lavel label-orange font14">{{ clothesCtrl.countQuantity() }} items</span>
-            " Sub Total: "{{ clothesCtrl.sum() | currency:"£" }}
+            Sub Total: {{ clothesCtrl.sum() | currency:"£" }}
           </a>
           <div class='waring' ng-show='clothesCtrl.outOfOrder'>
             Item out of order

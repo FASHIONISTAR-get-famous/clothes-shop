@@ -120,3 +120,7 @@ body {
   max-width: 100%;
   margin-bottom: 15px;
 }
+
+.waring {
+  color: red;
+}

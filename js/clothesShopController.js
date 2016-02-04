@@ -22,15 +22,16 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
       image: item.image
     };
 
-    if (quantity <= 0) {
+    if (quantity === 0) {
       self.outOfOrder = true;
-    } else if (self.isInCart(item)) {
+    } else if (self.isNotInCart(item)) {
       self.cart.push(item);
       self.outOfOrder = false;
     }
   };
 
-  self.isInCart = function(item) {
+
+  self.isNotInCart = function(item) {
     for(var i = 0; i < self.cart.length; i++) {
       if (item.name === self.cart[i].name) {
         return false;
@@ -93,6 +94,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     var total = self.afterDisc();
     self.finalTot = true;
     self.newTot = total - voucher;
+    return self.newTot;
   };
 
   self.countQuantity = function(){
@@ -107,9 +109,5 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     self.checkout = !self.checkout;
     self.list = !self.list;
   };
-
-  //self.notAvailable = function(){
-    //self.outOfOrder = !self.outOfOrder;
-  /*};*/
 }]);
 
