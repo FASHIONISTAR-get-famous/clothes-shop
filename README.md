@@ -45,7 +45,7 @@ I want to see the discount applied and a confirmation
 
 ![alt text](/img/Cart.png)
 
-#### My approach
+### My approach
 
 I have decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
 In particular the app shows two pages (home page and cart) through the built in angular function ng-show.
@@ -57,7 +57,7 @@ In the end the user can apply a voucher in order to receive three different disc
  - 10£ if purchase over 50£
  - 15£ if purchase over 75£ and at least one item is in footwear category
 
-#### Testing
+### Testing
 
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
 
