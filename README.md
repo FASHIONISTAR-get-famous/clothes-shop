@@ -60,13 +60,14 @@ In the end the user can apply a voucher in order to receive three different disc
 ### Notable issues
 
 * Although all the tests still pass, there are also not as many protractor tests as I would like to have because I have to fix the asynchronous call that don't let me to completely load the page in order to run protractor and select items.
-* I realised when was too late that I am not subtracting items quantity from the main object when added to the cart, because when I design the app I wanted to delegate the quantity function to Angular, so I forgot to evaluate the deduction.
+* I realised when was too late that I am not subtracting items quantity from the main object when added to the cart. This happen because when I was designing the app I wanted Angular in charge to modify the item quantity, so I forgot to evaluate the deduction.
 * Last but not least I have to mock the factory and spy on isVaucherCorrect().
 
-I really enjoyed making this app, I really feel improved from it. I only wish to had more time.
+Although I really enjoyed making this app, I really learned a lot from it. I only wish to had more time.
 
 ### Next steps
- I was planning to extract the search/cart section into a mobile friendly setup.
+* I was planning to make a mobile friendly setup.
+* Fix the issues above
 
 ### Testing
 
