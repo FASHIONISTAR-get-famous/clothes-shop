@@ -69,6 +69,47 @@ Although I really enjoyed making this app, I really learned a lot from it. I onl
 * I was planning to make a mobile friendly setup.
 * Fix the issues above
 
+### File layout
+```
+js
+├── app.js
+├── clothesShopController.js
+└── clothesShopFactory.js
+test
+├── clothesControllerSpec.js
+├── clothesFactorySpec.js
+├── e2e
+│   ├── clothesShopFeature.js
+│   └── conf.js
+├── karma.conf.js
+└── mock
+    └── clothes.json
+├── index.html
+├── package.json
+├── README.md
+├── bower.json
+css
+├── animate.css
+└── style.css
+img
+├── Cart.png
+├── FlipFlopsRed.png
+├── almondToeCourtShoes.jpg
+├── birdPrintDressBlack.jpg
+├── cottonShortsRed.png
+├── flipFlopsBlue.png
+├── goldButtonCardiganBlue.jpg
+├── homepage.png
+├── leatherDriverSaddle.jpg
+├── lightweightPathcPocketBlazer.png
+├── logo.png
+├── midTwistCutoutDressPink.jpeg
+├── sharkskinWaistcoat.png
+├── shortSleeveShirtGreen.png
+├── shortSleeveShirtGrey.jpeg
+└── suedeShoesBlue.png
+
+```
 ### Testing
 
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
