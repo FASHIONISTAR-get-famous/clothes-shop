@@ -45,8 +45,20 @@ I want to see the discount applied and a confirmation
 
 ![alt text](/img/Cart.png)
 
+#### My approach
 
 I have decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
+In particular the app shows two pages (home page and cart) through the built in angular function ng-show.
+The app should let the User add an item that will be automatically added to the cart with the default quantity of 1.
+I decided to not display the quantity available in order to show a message 'out of order' if the user would try to purchase an item not available.
+Once the User is happy with the shopping can go to the cart, through the cart button up to the right corner and modify the  quantity, remove the item and see automatically change the total.
+In the end the user can apply a voucher in order to receive three different discount.
+ - 5£
+ - 10£ if purchase over 50£
+ - 15£ if purchase over 75£ and at least one item is in footwear category
+
+#### Testing
+
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
 
 As a first step I've initialised the package managers, bower for the client side (angular mainly) and npm for the server side (Karma).
