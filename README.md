@@ -36,7 +36,7 @@ As a User
 So that i can see how much of a discount I've received
 I want to see the discount applied and a confirmation
 ```
-## Home page
+### Home page
 
 ![alt text](/img/homepage.png)
 
