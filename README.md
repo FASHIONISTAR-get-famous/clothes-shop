@@ -36,9 +36,14 @@ As a User
 So that i can see how much of a discount I've received
 I want to see the discount applied and a confirmation
 ```
+### Home page
 
 ![alt text](/img/homepage.png)
-![alt text](img/cart.png)
+
+
+### Cart
+
+![alt text](/img/cart.png)
 
 
 I have decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
