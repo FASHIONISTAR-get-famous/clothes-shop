@@ -26,15 +26,18 @@ body {
   max-width: 100%;
 }
 .container {
+  min-height: 7em;
   margin-right: auto;
   margin-left: auto;
   min-width: 1200px;
   margin-top: 10px;
   margin-bottom: 10px;
+  border-bottom: 5px double #F2F2F2;
 }
 
 .maincontainer {
   font-size: 14px;
+  margin-top: 2em;
 }
 
 .heading1 {
@@ -136,4 +139,19 @@ body {
 
 .waring {
   color: red;
+}
+
+#add {
+  font-size: 25px;
+}
+
+.voucherBox {
+  width: 200px;:wa
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.voucherButton {
+  width: 120px;
+  margin-right: 20px;
 }

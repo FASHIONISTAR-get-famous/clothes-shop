@@ -2,9 +2,10 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
 
   var self = this;
   self.cart = [];
+  self.discount = 0;
   self.outOfOrder = false;
   self.list = true;
-  self.newTot = 0;
+  self.voucherCodes = ['womenwear', 'casual', 'footwear'];
 
   var data = clothesShopFactory.clothes()
   .then(function(response) {
@@ -46,53 +47,54 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
     return tot;
   };
 
-  self.discount = function(){
-    var tot = self.sum();
-    var discount = 0;
-    if (tot > 75 && self.isMenCategory()) {
-      discount = 15;
-    } else if (tot > 50) {
-      discount = 10;
-    }
-    return discount;
-  };
-
-  self.isMenCategory = function(){
+  self.isFootwear = function(){
     for (var i = 0; i < self.cart.length; i++) {
-      if(self.cart[i].category === "Men's Footwear") {
+      var category = self.cart[i].category;
+      if(category === "Men's Footwear" || category === "Women's Footwear") {
         return true;
       }
     }
-    return false;
+  };
+
+  self.isVoucherCorrect = function(){
+    var prova = new RegExp(self.voucher);
+    if (prova.test(self.voucherCodes) === true) {
+      self.showOkVoucher();
+      return true;
+    } else {
+      self.showWrongVoucher();
+      return false;
+    }
+  };
+
+  self.showOkVoucher = function(){
+    self.okVoucher = true;
+    self.wrongVoucher = false;
+  };
+
+  self.showWrongVoucher = function(){
+    self.okVoucher = false;
+    self.wrongVoucher = true;
+  };
+
+  self.checkDiscount = function(){
+    var tot = self.sum();
+    if(self.isVoucherCorrect()) {
+      if (tot > 75 && self.isFootwear()) {
+        self.discount = 15;
+      } else if (tot > 50) {
+        self.discount = 10;
+      } else {
+        self.discount = 5;
+      }
+    }
+    return self.discount;
   };
 
   self.afterDisc = function(){
     var sum = self.sum();
-    var discount = self.discount();
-    var total = sum - discount;
+    var total = sum - self.discount;
     return total;
-  };
-
-  self.isVoucherCorrect = function(){
-    var codes = ['womenwear', 'casual', 'footwear'];
-    var prova = new RegExp(self.voucher);
-    if (prova.test(codes) === true) {
-      voucher = 5;
-      self.okVoucher = true;
-      self.wrongVoucher = false;
-    } else {
-      voucher = 0;
-      self.wrongVoucher = true;
-      self.okVoucher = false;
-    }
-    self.totAfterVoucher(voucher);
-  };
-
-  self.totAfterVoucher = function(voucher){
-    var total = self.afterDisc();
-    self.finalTot = true;
-    self.newTot = total - voucher;
-    return self.newTot;
   };
 
   self.countQuantity = function(){

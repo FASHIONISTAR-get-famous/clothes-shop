@@ -27,7 +27,7 @@
               <div class="logo">
                 <a class="logo">
                   <img alt src="img/logo.png" ng-click="clothesCtrl.toCart()"
-                    style="max-width: 350px">
+                  style="max-width: 350px">
                 </a>
               </div>
             </div>
@@ -43,30 +43,6 @@
 
             </div>
           </div>
-          <div id="categorymenu">
-            <nav class='subnav'>
-            <ul class='nav-pills categorymenu container'>
-              <li>
-              <a  >MEN'S FOOTWEAR</a>
-              </li>
-              <li>
-              <a  >WOMEN'S FOOTWEAR</a>
-              </li>
-              <li>
-              <a  >WOMEN'S CASUALWEAR</a>
-              </li>
-              <li>
-              <a  >MENS'S CASUALWEAR</a>
-              </li>
-              <li>
-              <a  >WOMEN'S FORMALWEAR</a>
-              </li>
-              <li>
-              <a  >MEN'S FORMALWEAR</a>
-              </li>
-            </ul>
-            </nav>
-          </div>
         </div>
 
         <!--main body-->
@@ -81,8 +57,7 @@
                   {{item.name}}<br>Price: {{ item.price | currency:"£" }}
                 </div>
                 <div id='add' class='pull-right'>
-                  <a ng-click="clothesCtrl.addItem(item)"><i class="fa
-                      fa-plus fa-1x"></i></a>  </div>
+                  <a ng-click="clothesCtrl.addItem(item)"><strong>+</strong></a>  </div>
               </div>
             </div>
           </ul>
@@ -104,7 +79,7 @@
                   <th >Product Name</th>
                   <th >Qty</th>
                   <th >Unit price</th>
-                  <th >Total</th>
+                  <th >Category</th>
                   <th >Remove</th>
                 </tr>
                 <tr>
@@ -119,13 +94,14 @@
                   </td>
                   <td class='quantity'>
                     <div>
-                      <input type="number" placeholder='quantity' class='inputBox' ng-model="clothesCtrl.cart[$index].quantity">
+                      <input type="number" placeholder='quantity' min="0" class='inputBox' ng-model="clothesCtrl.cart[$index].quantity">
                     </div>
                   </td>
                   <td class='unitPrice'>
                     {{ item.price | currency:"£" }}
                   </td>
                   <td class='price'>
+                    {{ item.category }}
                   </td>
                   <td class='action'>
                     <a ng-click='clothesCtrl.cart.splice($index, 1)'>Remove</a>
@@ -136,57 +112,64 @@
           </div>
 
 
-          <div class='pull-right'>
-            <div class='totalCart'>
-              <table class='table table-striped table-bordered'>
-                <tbody>
+<!--          <div class='pull-right'>-->
+            <!--<div class='totalCart'>-->
+              <!--<table class='table table-striped table-bordered'>-->
+                <!--<tbody>-->
+                  <!--<tr>-->
+                    <!--<td>-->
+                      <!--<span class='extra bold totalamount'>SubTotal: </span>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                      <!--<span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+                <!--</tbody>-->
+              <!--</table>-->
+              <!--<table class='table table-striped table-bordered'>-->
+                <!--<tbody>-->
+
+                  <!--<tr>-->
+                    <!--<td>-->
+                      <!--<span class="extra bold">Discount: </span>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                      <!--<span class='bold'>{{ clothesCtrl.isVoucherCorrect() | currency:"£" }}</span>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+                  <!--<tr>-->
+                    <!--<td>-->
+                      <!--<span class='extra bold totalamount'><strong>Total:-->
+                      <!--</strong></span>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                      <!--<span class='bold totalamount'>{{ clothesCtrl.afterDisc() | currency:"£" }}</span>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+
+
+
                   <tr>
                     <td>
-                      <span class='extra bold totalamount'>SubTotal: </span>
+                      <span class='voucherText'>Voucher: </span>
                     </td>
                     <td>
-                      <span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class="extra bold">Discount: </span>
-                    </td>
-                    <td>
-                      <span class='bold'>{{ clothesCtrl.discount() | currency:"£" }}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <span class='extra bold totalamount'>Total: </span>
-                    </td>
-                    <td>
-                      <span class='bold totalamount'>{{ clothesCtrl.afterDisc() | currency:"£" }}</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table class='table table-striped table-bordered'>
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class='extra bold totalamount'>Voucher: </span>
-                    </td>
-                    <td>
-                      <input type='text' class='bold totalamount' placeholder='Insert your voucher'ng-model='clothesCtrl.voucher'>
-                      <button ng-click='clothesCtrl.isVoucherCorrect()'>Confirm</button>
+                      <input type='text' class='voucherBox' placeholder='Insert your voucher'ng-model='clothesCtrl.voucher'>
+                      <button class='voucherButton'
+                        ng-click='clothesCtrl.checkDiscount()'>Confirm</button>
                       <span ng-show="clothesCtrl.okVoucher" ><i class="fa fa-check"></i> </span>
                       <span ng-show="clothesCtrl.wrongVoucher" > <i class="fa fa-times"></i></span>
 
                     </td>
                   </tr>
-                  <tr ng-show='clothesCtrl.finalTot'>
+                  <tr>
                     <td>
-                      <span class='extra bold totalamount'>New Total: </span>
+                      <span class='extra bold totalamount'><strong>New Total:
+                      </strong></span>
                     </td>
                     <td>
                       <span class='bold totalamount'>
-                        {{ clothesCtrl.newTot | currency:"£" }}</span>
+                        {{ clothesCtrl.discount | currency:"£" }}</span>
                     </td>
                   </tr>
                 </tbody>
