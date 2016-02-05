@@ -32,7 +32,7 @@
               </div>
             </div>
             <div class="pull-right">
-              <a ng-ref="cart" ng-click="clothesCtrl.toCart()">
+              <a ng-ref="cart" ng-click="clothesCtrl.toCart()" id="cartItems">
                 <i class="fa fa-shopping-cart font18"></i>
                 <span class="lavel label-orange font14">{{ clothesCtrl.countQuantity() }} items</span>
                 Sub Total: {{ clothesCtrl.sum() | currency:"£" }}
@@ -54,10 +54,13 @@
                   <img alt src="{{ item.image }}" class="img">
                 </div>
                 <div id='details' class='pull-left'>
-                  {{item.name}}<br>Price: {{ item.price | currency:"£" }}
+                  <div>{{item.name}}
+                  </div>
+                  <div>Price: {{ item.price | currency:"£" }}
+                  </div>
                 </div>
                 <div id='add' class='pull-right'>
-                  <a ng-click="clothesCtrl.addItem(item)"><strong>+</strong></a>  </div>
+                  <a id='addToBasket' ng-click="clothesCtrl.addItem(item)"><strong>+</strong></a>  </div>
               </div>
             </div>
           </ul>
