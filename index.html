@@ -112,45 +112,24 @@
           </div>
 
 
-<!--          <div class='pull-right'>-->
-            <!--<div class='totalCart'>-->
-              <!--<table class='table table-striped table-bordered'>-->
-                <!--<tbody>-->
-                  <!--<tr>-->
-                    <!--<td>-->
-                      <!--<span class='extra bold totalamount'>SubTotal: </span>-->
-                    <!--</td>-->
-                    <!--<td>-->
-                      <!--<span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>-->
-                    <!--</td>-->
-                  <!--</tr>-->
-                <!--</tbody>-->
-              <!--</table>-->
-              <!--<table class='table table-striped table-bordered'>-->
-                <!--<tbody>-->
-
-                  <!--<tr>-->
-                    <!--<td>-->
-                      <!--<span class="extra bold">Discount: </span>-->
-                    <!--</td>-->
-                    <!--<td>-->
-                      <!--<span class='bold'>{{ clothesCtrl.isVoucherCorrect() | currency:"£" }}</span>-->
-                    <!--</td>-->
-                  <!--</tr>-->
-                  <!--<tr>-->
-                    <!--<td>-->
-                      <!--<span class='extra bold totalamount'><strong>Total:-->
-                      <!--</strong></span>-->
-                    <!--</td>-->
-                    <!--<td>-->
-                      <!--<span class='bold totalamount'>{{ clothesCtrl.afterDisc() | currency:"£" }}</span>-->
-                    <!--</td>-->
-                  <!--</tr>-->
-
-
-
+          <div class='pull-right' style='margin-right: 0em;'>
+            <div class='totalCart'>
+              <table class='table table-striped table-bordered'>
+                <tbody>
                   <tr>
+                    <td style="width: 22em">
+                      <span class='extra bold totalamount'>SubTotal: </span>
+                    </td>
                     <td>
+                      <span class='bold totalamount'>{{ clothesCtrl.sum() | currency:"£" }}</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class='table table-striped table-bordered'>
+                <tbody>
+                  <tr>
+                    <td style='width: 6em'>
                       <span class='voucherText'>Voucher: </span>
                     </td>
                     <td>
@@ -159,17 +138,28 @@
                         ng-click='clothesCtrl.checkDiscount()'>Confirm</button>
                       <span ng-show="clothesCtrl.okVoucher" ><i class="fa fa-check"></i> </span>
                       <span ng-show="clothesCtrl.wrongVoucher" > <i class="fa fa-times"></i></span>
-
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class='table table-striped table-bordered'
+                ng-show='clothesCtrl.afterVoucher'>
+                <tbody>
+                  <tr>
+                    <td style="width: 22em">
+                      <span class="extra bold">Discount: </span>
+                    </td>
+                    <td>
+                      <span class='bold'>{{ clothesCtrl.discount | currency:"£" }}</span>
                     </td>
                   </tr>
                   <tr>
-                    <td>
-                      <span class='extra bold totalamount'><strong>New Total:
+                    <td style="width: 22em">
+                      <span class='extra bold totalamount'><strong>Total:
                       </strong></span>
                     </td>
                     <td>
-                      <span class='bold totalamount'>
-                        {{ clothesCtrl.discount | currency:"£" }}</span>
+                      <span class='bold totalamount'>{{ clothesCtrl.afterDisc() | currency:"£" }}</span>
                     </td>
                   </tr>
                 </tbody>
@@ -178,33 +168,7 @@
           </div>
         </div>
       </div>
-
-
-      <!--<div class="discount" ng-show="clothesCtrl.checkout">-->
-        <!--<button ng-click="clothesCtrl.toCart()">Back</button>-->
-        <!--<div class="list-group" ng-repeat="item in clothesCtrl.cart">-->
-          <!--<ul>-->
-            <!--{{ item.name }} {{ item.quantity }} {{ item.category }}-->
-            <!--</div>-->
-
-          <!--<form name="myForm">-->
-            <!--<input type='text' name="voucher" placeholder="Insert your voucher" ng-minlength="6"-->
-            <!--ng-maxlength="7" ng-model="clothesCtrl.voucher">-->
-            <!--<button ng-click="clothesCtrl.discount()">Confirm</button>-->
-            <!--<span class="newTot">Total after discount: {{ clothesCtrl.discount() |-->
-              <!--currency:"£" }}</span>-->
-            <!--<div role="alert">-->
-              <!--<span class="error" ng-show="myForm.voucher.$error.minlength">Too-->
-                <!--short!</span>-->
-              <!--<span class="error" ng-show="myForm.voucher.$error.maxlength">Too-->
-                <!--long!</span>-->
-              <!--</div>-->
-            <!--</form>-->
-          <!--</div>-->
-        <!--</div>-->
     </div>
-  </div>
-</div>
   </body>
 </html>
 

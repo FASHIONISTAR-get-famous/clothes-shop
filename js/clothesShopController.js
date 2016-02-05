@@ -88,6 +88,7 @@ clothesShop.controller('clothesShopController', ["clothesShopFactory", function(
         self.discount = 5;
       }
     }
+    self.afterVoucher = true;
     return self.discount;
   };
 
