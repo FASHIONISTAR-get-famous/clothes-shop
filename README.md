@@ -43,7 +43,7 @@ I want to see the discount applied and a confirmation
 
 ### Cart
 
-![alt text](/img/cart.png)
+![alt text](/img/Cart.png)
 
 
 I have decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
