@@ -37,6 +37,9 @@ So that i can see how much of a discount I've received
 I want to see the discount applied and a confirmation
 ```
 
+![alt text][homepage.png]
+![alt text][cart.png]
+
 
 I have decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
