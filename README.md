@@ -57,6 +57,17 @@ In the end the user can apply a voucher in order to receive three different disc
  - 10£ if purchase over 50£
  - 15£ if purchase over 75£ and at least one item is in footwear category
 
+### Notable issues
+
+* Although all the tests still pass, there are also not as many protractor tests as I would like to have because I have to fix the asynchronous call that don't let me to completely load the page in order to run protractor and select items.
+* I realised when was too late that I am not subtracting items quantity from the main object when added to the cart, because when I design the app I wanted to delegate the quantity function to Angular, so I forgot to evaluate the deduction.
+* Last but not least I have to mock the factory and spy on isVaucherCorrect().
+
+I really enjoyed making this app, I really feel improved from it. I only wish to had more time.
+
+### Next steps
+ I was planning to extract the search/cart section into a mobile friendly setup.
+
 ### Testing
 
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
