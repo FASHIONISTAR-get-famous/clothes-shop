@@ -21,7 +21,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'js/*.js',
       'test/*Spec.js',
-      {pattern: 'test/mock/*.json', watched: true, server: true, included: false}
+      //{pattern: 'test/mock/*.json', watched: true, server: true, included: false}
     ],
 
 
