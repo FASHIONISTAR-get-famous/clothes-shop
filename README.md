@@ -50,11 +50,11 @@ I want to see the discount applied and a confirmation
 
 I've decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
 In particular the app shows two pages (home page and cart) through the built in angular function ng-show.
-I've dedice to approach the two pages differently. 
+I've dedice to approach the two pages differently.
 
 In the 'home page' I've used the JS code to manipulate the objects, i.e. when a user add an item to my cart,
 the same item would be removed form the stock as well as the sum function etc.
-once the user is happy with the shopping, through the cart link can hide the
+Once the user is happy with the shopping, through the cart link can hide the
 shopping list and display the cart in order to modify the shopping cart.
 
 In the 'cart page' I've decided to use Angular in order to modify the
@@ -74,7 +74,7 @@ Although I really enjoyed making this app, I really learned a lot from it. I onl
 
 ### Next steps
 * I was planning to make a mobile friendly setup.
-* Deploy the app to Heroku 
+* Deploy the app to Heroku
 
 ### File layout
 ```
