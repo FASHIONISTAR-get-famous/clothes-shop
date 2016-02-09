@@ -9,20 +9,21 @@ clothesShop.controller('mainController', ["Item", function(Item) {
   self.clothesList = Item.query();
 
   self.addItem = function(item){
-    var quantity = item.quantity;
-    item = {
+
+    itemSelected = {
+      category: item.category,
       name: item.name,
       price: item.price,
       quantity: 1,
-      category: item.category,
       image: item.image
     };
 
-    if (quantity === 0) {
+    if (item.quantity === 0) {
       self.outOfOrder = true;
     } else if (self.isNotInCart(item)) {
-      self.cart.push(item);
-      self.outOfOrder = false;
+      self.addItemSelected(item, itemSelected);
+    } else {
+      self.addQuantity(item);
     }
   };
 
@@ -33,6 +34,26 @@ clothesShop.controller('mainController', ["Item", function(Item) {
       }
     }
     return true;
+  };
+
+  self.addItemSelected = function(item, itemSelected){
+    item.quantity --;
+    self.cart.push(itemSelected);
+    self.outOfOrder = false;
+  };
+
+  self.addQuantity = function(item){
+    var index = self.cartIndex(item);
+    self.cart[index].quantity ++;
+    item.quantity --;
+  };
+
+  self.cartIndex = function(item) {
+    for (var i = self.cart.length -1; i >=0; i--) {
+      if (self.cart[i].name === item.name) {
+        return i;
+      }
+    }
   };
 
   self.sum = function(){
@@ -50,15 +71,6 @@ clothesShop.controller('mainController', ["Item", function(Item) {
       }
     }
   };
-
-  /*  self.isFootwear = function(){*/
-  //for (var i = 0; i < self.cart.length; i++) {
-    //var category = self.cart[i].category;
-    //if(category === "Men's Footwear" || category === "Women's Footwear") {
-      //return true;
-      //}
-      //}
-    //};
 
     self.isVoucherCorrect = function(){
       var prova = new RegExp(self.voucher);
