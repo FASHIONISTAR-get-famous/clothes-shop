@@ -47,6 +47,16 @@ So that i can see how much of a discount I've received
 I want to see the discount applied and a confirmation
 ```
 
+## Technologies used
+
+* Javascript
+* AngularJS
+* Jasmine
+* Karma
+* Protractor
+* Selenium
+* HTML
+* CSS
 
 ## My approach
 
