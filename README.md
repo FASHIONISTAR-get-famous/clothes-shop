@@ -1,9 +1,18 @@
 ## CLOTHES-SHOP
 
-### Task
 The task is to build a *responsive website* for a clothing retailer that display the items, shopping cart and gives you the possibility to apply *vouchers* and receive *discount*.
 
-#### User Stories:
+## Home page
+
+![alt text](/img/homepage.png)
+
+
+## Cart
+
+![alt text](/img/Cart.png)
+
+
+## User Stories:
 ```
 As a User
 So that I can see all products
@@ -37,16 +46,9 @@ As a User
 So that i can see how much of a discount I've received
 I want to see the discount applied and a confirmation
 ```
-### Home page
-
-![alt text](/img/homepage.png)
 
 
-## Cart
-
-![alt text](/img/Cart.png)
-
-### My approach
+## My approach
 
 I've decided to use [AngularJS](https://angularjs.org/) as a front end framework in order to create a Single Page App.
 In particular the app shows two pages (home page and cart) through the built in angular function ng-show.
@@ -66,17 +68,17 @@ In the end the user can apply a voucher in order to receive three different disc
  - 10£ if purchase over 50£
  - 15£ if purchase over 75£ and at least one item is in footwear category
 
-### Notable issues
+## Notable issues
 
 * Although all the tests still pass, there are also not as many protractor tests as I would like to have because I have to fix the asynchronous call that don't let me to completely load the page in order to run protractor and select items.
 
 Although I really enjoyed making this app, I really learned a lot from it. I only wish to had more time.
 
-### Next steps
+## Next steps
 * I was planning to make a mobile friendly setup.
 * Deploy the app to Heroku
 
-### File layout
+## File layout
 ```
 js
 ├── app.js
@@ -117,7 +119,7 @@ img
 └── suedeShoesBlue.png
 
 ```
-### Testing
+## Testing
 
 I am using Jasmine as a test framework, [Karma](https://karma-runner.github.io/0.13/index.html) as a test runner and [Protractor](http://angular.github.io/protractor/#/) for the end to end Test
 
@@ -137,53 +139,51 @@ describe('The home page', function() {
   });
 });
 ```
-To test the app you need to have installed globally:
- - [NodeJS](https://nodejs.org/en/);
- - [Java Development
-Kit(JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html);
- - [karma](https://karma-runner.github.io/0.13/index.html);
- - [Protractor](http://angular.github.io/protractor/#/);
 
-Clone the repo
+## In order to test the app you need to have installed globally:
+
+* [NodeJS](https://nodejs.org/en/);
+* [Java Development
+Kit(JDK)](http://www.oracle.com/technetwork/java/javase/downloads/index.html);
+* [karma](https://karma-runner.github.io/0.13/index.html);
+* [Protractor](http://angular.github.io/protractor/#/);
+
+#### Clone the repo
 ```
 $ git clone https://github.com/Mattia46/clothes-shop
 $ cd clothes-shop
 ```
 
- Install webdriver and a server (I've used http-server)
+#### Install webdriver and a server (I've used http-server)
   ```
 $ webdriver-manager update
 $ npm install http-server -g
   ```
-  Install the dependencies
+####  Install the dependencies
 ```
 $ npn install
 $ bower install
 ```
 
-##### e2e:
+## How to run functional test:
 
-  Run the webdriver manager and http-server
+* Run the webdriver manager and http-server
 ```
 $ webdriver-manager start
 $ http-server
 ```
-  Run protractor from the main folder
+* Run protractor from the main folder
   ```
 $ protractor test/e2e/conf.js
   ```
 
-##### Karma:
-  Run karma from the main folder
+## How to run the unit test:
 ```
 $ karma start test/karma.conf.js
   ```
 
-##### Webpage:
+## Webpage:
   ```
-$ http-server  
-  ```
-on the webpage 
-```
+$ http-server
 http://localhost:8080/
 ```
